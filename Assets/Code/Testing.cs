@@ -9,6 +9,11 @@ using Unity.Rendering;
 public class Testing : MonoBehaviour
 {
 
+    [SerializeField]
+    private Mesh m_mesh;
+    [SerializeField]
+    private Material m_material;
+
     private void Start()
     {
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
@@ -28,7 +33,8 @@ public class Testing : MonoBehaviour
 
             entityManager.SetSharedComponentData(entity, new RenderMesh()
             {
-               // mesh = 
+                mesh = m_mesh,
+                material = m_material,
             });
         }
         entityArray.Dispose();
