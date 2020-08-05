@@ -7,12 +7,22 @@ using System;
 public class PrefabEntities : MonoBehaviour, IConvertGameObjectToEntity
 {
     public static Entity prefabEntity;
+    public static EntityManager managerEntity;
 
     public GameObject prefabGameObject;
 
+    private BlobAssetStore blobAssetStore;
+
+    private void Awake()
+    {
+        blobAssetStore = new BlobAssetStore();
+
+        managerEntity = World.DefaultGameObjectInjectionWorld.EntityManager;
+    }
+
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
-        using (BlobAssetStore blobAssetStore = new BlobAssetStore())
+        //using ()
         {
             Entity prefabEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(
                 prefabGameObject,

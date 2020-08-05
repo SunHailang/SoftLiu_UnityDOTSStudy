@@ -17,13 +17,13 @@ public class EntitySpawnerSystem : ComponentSystem
 
     protected override void OnUpdate()
     {
-        //m_spawnTimer -= UnityEngine.Time.deltaTime;
+        m_spawnTimer -= UnityEngine.Time.deltaTime;
         if (m_spawnTimer <= 0)
         {
             m_spawnTimer = 0.5f;
             // Spawn
 
-            Entity spawnedEntity = EntityManager.Instantiate(PrefabEntities.prefabEntity);
+            Entity spawnedEntity = PrefabEntities.managerEntity.Instantiate(PrefabEntities.prefabEntity);
             EntityManager.SetComponentData(spawnedEntity, new Translation() { Value = new float3(random.NextFloat(-5, 5), random.NextFloat(-5, 5), 0) });
 
             /*
