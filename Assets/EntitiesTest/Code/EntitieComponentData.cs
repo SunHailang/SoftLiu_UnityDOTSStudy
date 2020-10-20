@@ -4,9 +4,7 @@ using UnityEngine;
 using Unity.Entities;
 using Unity.Mathematics;
 
-public struct MoveComponentData : IComponentData
+public class EntitieComponentData : IComponentData
 {
-    public float moveSpeed;
-    public float3 moveDirect;
+    
 }
-
