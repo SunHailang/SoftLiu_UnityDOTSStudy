@@ -5,84 +5,79 @@ using System;
 using Unity.Mathematics;
 using Unity.Transforms;
 using Unity.Jobs;
+using Unity.Rendering;
 
 public class EntitiesTest : MonoBehaviour
 {
-
-    public GameObject prefab;
+    [SerializeField]
+    private Mesh unitMesh;
+    [SerializeField]
+    private Material unitMaterial;
+    [SerializeField]
+    private GameObject gameObjectPrefab;
 
     private EntityManager m_entityManager;
-
-    private NativeArray<Entity> entityArray;
-
-    [Range(30, 100)]
-    public float m_cycle = 50;
-
-    private float m_deltaTime = 0;
-
-    private float m_scale = 0.2f;
+    private Entity m_entityPrefab;
+    private World m_entityWorld;
 
     private void Awake()
     {
-        m_entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        m_entityWorld = World.DefaultGameObjectInjectionWorld;
+        m_entityManager = m_entityWorld.EntityManager;
     }
 
     private void Start()
     {
-        prefab.transform.localScale = Vector3.one * m_scale;
+        GameObjectConversionSettings settings = GameObjectConversionSettings.FromWorld(m_entityWorld, new BlobAssetStore());
+        m_entityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(gameObjectPrefab, settings);
 
-        int len = Mathf.FloorToInt(20 / m_scale);
-        entityArray = new NativeArray<Entity>(len, Allocator.Persistent);
 
-        Entity entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(prefab, GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, new BlobAssetStore()));
-        m_entityManager.Instantiate(entity, entityArray);
-        for (int i = 0; i < entityArray.Length; i++)
-        {
-            m_entityManager.SetComponentData<Translation>(entityArray[i], new Translation() { Value = float3.zero });
-            m_entityManager.SetComponentData<Rotation>(entityArray[i], new Rotation() { Value = Quaternion.identity });
-        }
-
+        //InstantiateEntity(new float3(2f, 0f, 4f));
+        InstantiateEntityGrid(10, 10, 0.1f);
     }
 
-    private void Update()
+    private void InstantiateEntity(float3 position)
     {
-        m_deltaTime += Time.deltaTime;
-
-        NativeArray<float3> tmpPosition = new NativeArray<float3>(entityArray.Length, Allocator.TempJob);
-        NativeArray<float3> tmpRotation = new NativeArray<float3>(entityArray.Length, Allocator.TempJob);
-        for (int i = 0; i < entityArray.Length; i++)
+        Entity myEntity = m_entityManager.Instantiate(m_entityPrefab);
+        m_entityManager.SetComponentData(myEntity, new Translation()
         {
-            Translation ts = m_entityManager.GetComponentData<Translation>(entityArray[i]);
-            Rotation rt = m_entityManager.GetComponentData<Rotation>(entityArray[i]);
-            tmpPosition[i] = ts.Value.xyz;
-            tmpRotation[i] = rt.Value.value.xyz;
-        }
-
-        EntitiesJobParallelForTest jobParallelForTest = new EntitiesJobParallelForTest()
-        {
-            position = tmpPosition,
-            rotation = tmpRotation,
-            deltaTime = m_deltaTime,
-            cycle = m_cycle,
-            scale = m_scale
-        };
-        JobHandle jobTestHandle = jobParallelForTest.Schedule(entityArray.Length, 10);
-        jobTestHandle.Complete();
-        for (int i = 0; i < entityArray.Length; i++)
-        {
-            Translation ts = m_entityManager.GetComponentData<Translation>(entityArray[i]);
-            Rotation rt = m_entityManager.GetComponentData<Rotation>(entityArray[i]);
-            ts.Value.xyz = tmpPosition[i];
-            rt.Value.value.xyz = tmpRotation[i];
-        }
-        tmpPosition.Dispose();
-        tmpRotation.Dispose();
+            Value = position
+        });
     }
 
-    private void OnDestroy()
+    private void InstantiateEntityGrid(int dimX, int dimY, float spacing = 0.1f)
     {
-        entityArray.Dispose();
+        for (int i = 0; i < dimX; i++)
+        {
+            for (int j = 0; j < dimY; j++)
+            {
+                InstantiateEntity(new float3(i + spacing, j + spacing, 0));
+            }
+        }
     }
+
+    private void MakeEntity()
+    {
+        EntityArchetype archetype = m_entityManager.CreateArchetype(
+            typeof(Translation),
+            typeof(Rotation),
+            typeof(RenderMesh),
+            typeof(RenderBounds),
+            typeof(LocalToWorld));
+
+        Entity entity = m_entityManager.CreateEntity(archetype);
+        m_entityManager.AddComponentData(entity, new Translation()
+        {
+            Value = new float3(2f, 0f, 4f)
+        });
+
+        m_entityManager.AddSharedComponentData(entity, new RenderMesh()
+        {
+            mesh = unitMesh,
+            material = unitMaterial
+        });
+    }
+
 }
 
 public struct EntitiesJobParallelForTest : IJobParallelFor
