@@ -1,16 +1,23 @@
 ﻿using Unity.Entities;
 using Unity.Transforms;
 using Unity.Mathematics;
+using Unity.Jobs;
 
-public class WaveSystem : ComponentSystem
+namespace SoftLiu.EntitiesTest
 {
-    protected override void OnUpdate()
+    public class WaveSystem : ComponentSystem
     {
-        Entities.ForEach((ref Translation tanslation, ref MoveData moveSpeed, ref WaveData waveData) =>
+
+        protected override void OnUpdate()
         {
-            float zPosition = waveData.amplitude * math.sin((float)Time.ElapsedTime * moveSpeed.Value +
-                tanslation.Value.x * waveData.xOffset + tanslation.Value.y * waveData.yOffset);
-            tanslation.Value = new float3(tanslation.Value.x, tanslation.Value.y, zPosition);
-        });
+            float elapsedTime = (float)Time.ElapsedTime;
+
+            Entities.WithAll<MoveData>().ForEach((ref Translation tanslation, ref MoveData moveSpeed, ref WaveData waveData) =>
+            {
+                float zPosition = waveData.amplitude * math.sin(elapsedTime * moveSpeed.Value +
+                    tanslation.Value.x * waveData.xOffset + tanslation.Value.y * waveData.yOffset);
+                tanslation.Value = new float3(tanslation.Value.x, tanslation.Value.y, zPosition);
+            });
+        }
     }
 }
