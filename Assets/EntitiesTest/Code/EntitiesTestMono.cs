@@ -23,11 +23,13 @@ public class EntitiesTestMono : MonoBehaviour
 
     private void Start()
     {
+        BlobAssetStore store = new BlobAssetStore();
         World world = World.DefaultGameObjectInjectionWorld;
         m_entityManager = world.EntityManager;
-        m_entityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(m_convered, GameObjectConversionSettings.FromWorld(world, null));
+        m_entityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(m_convered, GameObjectConversionSettings.FromWorld(world, store));
         //InstantiateEntity(new float3(2f, 0f, 4f));
         InstantiateEntityGrid(x, y, spacing);
+        store.Dispose();
     }
 
     private void InstantiateEntity(float3 position)
@@ -40,9 +42,11 @@ public class EntitiesTestMono : MonoBehaviour
     }
     private void InstantiateEntityGrid(int x, int y, float spacing = 1f)
     {
-        for (int i = 0; i < x; i++)
+        int startX = x / 2;
+        int startY = y / 2;
+        for (int i = -startX; i < startX; i++)
         {
-            for (int j = 0; j < y; j++)
+            for (int j = -startY; j < startY; j++)
             {
                 Entity myEntity = m_entityManager.Instantiate(m_entityPrefab);
                 m_entityManager.SetComponentData(myEntity, new Translation()
@@ -51,6 +55,6 @@ public class EntitiesTestMono : MonoBehaviour
                 });
             }
         }
-        
+
     }
 }

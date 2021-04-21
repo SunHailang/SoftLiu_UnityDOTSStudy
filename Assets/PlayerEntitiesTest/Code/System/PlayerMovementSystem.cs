@@ -7,7 +7,7 @@ public class PlayerMovementSystem : SystemBase
 {
     protected override void OnUpdate()
     {
-        float deltaTime = Time.DeltaTime;
+        float deltaTime = (float)Time.DeltaTime;
         Entities.
             WithAny<PlayerTag, EnemyTag>().
             ForEach((ref Translation translation, in MoveData moveData) =>
