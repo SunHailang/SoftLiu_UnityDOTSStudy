@@ -19,11 +19,10 @@ public class TargetToDirectionSystem : SystemBase
             ForEach((ref MoveData moveData, ref Rotation rotation, in Translation translation, in TargetData targetData) =>
             {
                 ComponentDataFromEntity<Translation> allTranslation = GetComponentDataFromEntity<Translation>(true);
-                if (!allTranslation.Exists(targetData.targetEntity))
+                if (!allTranslation.HasComponent(targetData.targetEntity))
                 {
                     return;
                 }
-
                 Translation targetPos = allTranslation[targetData.targetEntity];
                 float3 dirToTarget = targetPos.Value - translation.Value;
                 moveData.direction = dirToTarget;

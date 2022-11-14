@@ -1,12 +1,9 @@
 ﻿using Unity.Burst;
 using Unity.Collections;
-using Unity.Entities;
 using Unity.Jobs;
-using Unity.Mathematics;
-using Unity.Transforms;
+using Unity.Entities;
 using Unity.Physics;
 using Unity.Physics.Systems;
-using System;
 
 [UpdateAfter(typeof(EndFramePhysicsSystem))]
 public class PickupOnCollisionSystem : JobComponentSystem
@@ -32,13 +29,13 @@ public class PickupOnCollisionSystem : JobComponentSystem
             Entity entityA = collisionEvent.EntityA;
             Entity entityB = collisionEvent.EntityB;
 
-            bool isBodyADynamic = PhysicsVelocityGroup.Exists(entityA);
-            bool isBodyBDynamic = PhysicsVelocityGroup.Exists(entityB);
+            bool isBodyADynamic = PhysicsVelocityGroup.HasComponent(entityA);
+            bool isBodyBDynamic = PhysicsVelocityGroup.HasComponent(entityB);
 
 
             if (isBodyADynamic && isBodyBDynamic)
             {
-                
+
             }
         }
     }
@@ -48,8 +45,8 @@ public class PickupOnCollisionSystem : JobComponentSystem
         PickupOnCollisionSystemJob job = new PickupOnCollisionSystemJob();
         job.PhysicsVelocityGroup = GetComponentDataFromEntity<PhysicsVelocity>(true);
 
-        JobHandle jobHandle = job.Schedule(stepPhysicsWorld.Simulation, 
-                                        ref buildPhysicsWorld.PhysicsWorld, 
+        JobHandle jobHandle = job.Schedule(stepPhysicsWorld.Simulation,
+                                        ref buildPhysicsWorld.PhysicsWorld,
                                         inputDeps);
 
 

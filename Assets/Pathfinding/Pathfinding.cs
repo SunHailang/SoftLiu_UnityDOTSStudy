@@ -173,7 +173,7 @@ public class Pathfinding : MonoBehaviour
                 NativeList<int2> path = CalculatePath(pathNodeArray, endNode);
                 foreach (int2 item in path)
                 {
-                    UnityEngine.Debug.Log(item);
+                    
                 }
                 path.Dispose();
             }
