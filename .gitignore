@@ -7,6 +7,7 @@
 /Builds/
 .vs/
 .vscode/
+.idea/
 /Temp/
 obj/
 /Logs/
