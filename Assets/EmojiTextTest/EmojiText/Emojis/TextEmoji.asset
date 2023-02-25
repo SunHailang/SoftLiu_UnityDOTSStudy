@@ -1,0 +1,228 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &-7030588077762932140
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/EmojiFont
+  m_Shader: {fileID: 4800000, guid: 98b6b727e5e281448a06c4fecba3cfae, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _EmojiTex:
+        m_Texture: {fileID: 2800000, guid: 37b65a150fd36364dbd6a2cab07f2a26, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Column: 8
+    - _EmojiSize: 0.125
+    - _EmojiSpeed: 3
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac767281e8c85f14dbfa1e96a972d701, type: 3}
+  m_Name: TextEmoji
+  m_EditorClassIdentifier: 
+  spriteSheet: {fileID: 2800000, guid: 37b65a150fd36364dbd6a2cab07f2a26, type: 3}
+  material: {fileID: -7030588077762932140}
+  emojiSize: 0.125
+  column: 8
+  spriteInfoList:
+  - name: Angel
+    index: 0
+    frameCount: 1
+  - name: Angry
+    index: 1
+    frameCount: 1
+  - name: Beckon
+    index: 2
+    frameCount: 1
+  - name: Bitter
+    index: 3
+    frameCount: 1
+  - name: Blush
+    index: 4
+    frameCount: 1
+  - name: Cake
+    index: 5
+    frameCount: 1
+  - name: Cat
+    index: 6
+    frameCount: 1
+  - name: Chuckle
+    index: 7
+    frameCount: 1
+  - name: Clap
+    index: 8
+    frameCount: 1
+  - name: Clink
+    index: 9
+    frameCount: 1
+  - name: Cool
+    index: 10
+    frameCount: 1
+  - name: Cry
+    index: 11
+    frameCount: 1
+  - name: Demon
+    index: 12
+    frameCount: 1
+  - name: Despair
+    index: 13
+    frameCount: 1
+  - name: Dislike
+    index: 14
+    frameCount: 1
+  - name: Dissatisfied
+    index: 15
+    frameCount: 1
+  - name: Dizzy
+    index: 16
+    frameCount: 1
+  - name: Doze
+    index: 17
+    frameCount: 1
+  - name: Drool
+    index: 18
+    frameCount: 1
+  - name: Encourage
+    index: 19
+    frameCount: 1
+  - name: Frown
+    index: 20
+    frameCount: 1
+  - name: GoForIt
+    index: 21
+    frameCount: 1
+  - name: Good
+    index: 22
+    frameCount: 1
+  - name: Gosh
+    index: 23
+    frameCount: 1
+  - name: Grin
+    index: 24
+    frameCount: 1
+  - name: Grrieved
+    index: 25
+    frameCount: 1
+  - name: Heart
+    index: 26
+    frameCount: 1
+  - name: Joyful
+    index: 27
+    frameCount: 1
+  - name: Kiss
+    index: 28
+    frameCount: 1
+  - name: Laugh
+    index: 29
+    frameCount: 1
+  - name: Mua
+    index: 30
+    frameCount: 1
+  - name: No
+    index: 31
+    frameCount: 1
+  - name: Ok
+    index: 32
+    frameCount: 1
+  - name: Pacify
+    index: 33
+    frameCount: 1
+  - name: Party
+    index: 34
+    frameCount: 1
+  - name: Pleasure
+    index: 35
+    frameCount: 1
+  - name: Poop
+    index: 36
+    frameCount: 1
+  - name: Rose
+    index: 37
+    frameCount: 1
+  - name: Salute
+    index: 38
+    frameCount: 1
+  - name: Scream
+    index: 39
+    frameCount: 1
+  - name: Shake
+    index: 40
+    frameCount: 1
+  - name: Shock
+    index: 41
+    frameCount: 1
+  - name: Shocked
+    index: 42
+    frameCount: 1
+  - name: Shy
+    index: 43
+    frameCount: 1
+  - name: Sick
+    index: 44
+    frameCount: 1
+  - name: Sigh
+    index: 45
+    frameCount: 1
+  - name: Silent
+    index: 46
+    frameCount: 1
+  - name: Smile
+    index: 47
+    frameCount: 1
+  - name: Snuggle
+    index: 48
+    frameCount: 1
+  - name: Sob
+    index: 49
+    frameCount: 1
+  - name: Speechless
+    index: 50
+    frameCount: 1
+  - name: Squirming
+    index: 51
+    frameCount: 1
+  - name: Tongue
+    index: 52
+    frameCount: 1
+  - name: Whimnper
+    index: 53
+    frameCount: 1
+  - name: Wink
+    index: 54
+    frameCount: 1
+  - name: Yeah
+    index: 55
+    frameCount: 1

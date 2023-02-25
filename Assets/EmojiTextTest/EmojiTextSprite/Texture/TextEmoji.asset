@@ -1,0 +1,1429 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efe682ead7eb154f97508822f9d073c, type: 3}
+  m_Name: TextEmoji
+  m_EditorClassIdentifier: 
+  Id: 0
+  IsStatic: 1
+  TexSource: {fileID: 2800000, guid: e1cf5cbdc0deb5340b901dbfab50b97c, type: 3}
+  Row: 8
+  Column: 8
+  Speed: 10
+  ListSpriteGroup:
+  - Tag: emoji_0
+    ListSpriteInfor:
+    - Id: 0
+      Rect:
+        serializedVersion: 2
+        x: 0
+        y: 315
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0
+        y: 0.875
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0, y: 1}
+      - {x: 0.125, y: 1}
+      - {x: 0.125, y: 0.875}
+      - {x: 0, y: 0.875}
+    Width: 1
+    Size: 24
+  - Tag: emoji_1
+    ListSpriteInfor:
+    - Id: 1
+      Rect:
+        serializedVersion: 2
+        x: 45
+        y: 315
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.125
+        y: 0.875
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.125, y: 1}
+      - {x: 0.25, y: 1}
+      - {x: 0.25, y: 0.875}
+      - {x: 0.125, y: 0.875}
+    Width: 1
+    Size: 24
+  - Tag: emoji_2
+    ListSpriteInfor:
+    - Id: 2
+      Rect:
+        serializedVersion: 2
+        x: 90
+        y: 315
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.25
+        y: 0.875
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.25, y: 1}
+      - {x: 0.375, y: 1}
+      - {x: 0.375, y: 0.875}
+      - {x: 0.25, y: 0.875}
+    Width: 1
+    Size: 24
+  - Tag: emoji_3
+    ListSpriteInfor:
+    - Id: 3
+      Rect:
+        serializedVersion: 2
+        x: 135
+        y: 315
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.375
+        y: 0.875
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.375, y: 1}
+      - {x: 0.5, y: 1}
+      - {x: 0.5, y: 0.875}
+      - {x: 0.375, y: 0.875}
+    Width: 1
+    Size: 24
+  - Tag: emoji_4
+    ListSpriteInfor:
+    - Id: 4
+      Rect:
+        serializedVersion: 2
+        x: 180
+        y: 315
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.5
+        y: 0.875
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.5, y: 1}
+      - {x: 0.625, y: 1}
+      - {x: 0.625, y: 0.875}
+      - {x: 0.5, y: 0.875}
+    Width: 1
+    Size: 24
+  - Tag: emoji_5
+    ListSpriteInfor:
+    - Id: 5
+      Rect:
+        serializedVersion: 2
+        x: 225
+        y: 315
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.625
+        y: 0.875
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.625, y: 1}
+      - {x: 0.75, y: 1}
+      - {x: 0.75, y: 0.875}
+      - {x: 0.625, y: 0.875}
+    Width: 1
+    Size: 24
+  - Tag: emoji_6
+    ListSpriteInfor:
+    - Id: 6
+      Rect:
+        serializedVersion: 2
+        x: 270
+        y: 315
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.75
+        y: 0.875
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.75, y: 1}
+      - {x: 0.875, y: 1}
+      - {x: 0.875, y: 0.875}
+      - {x: 0.75, y: 0.875}
+    Width: 1
+    Size: 24
+  - Tag: emoji_7
+    ListSpriteInfor:
+    - Id: 7
+      Rect:
+        serializedVersion: 2
+        x: 315
+        y: 315
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.875
+        y: 0.875
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.875, y: 1}
+      - {x: 1, y: 1}
+      - {x: 1, y: 0.875}
+      - {x: 0.875, y: 0.875}
+    Width: 1
+    Size: 24
+  - Tag: Snuggle
+    ListSpriteInfor:
+    - Id: 8
+      Rect:
+        serializedVersion: 2
+        x: 0
+        y: 270
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0
+        y: 0.75
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0, y: 0.875}
+      - {x: 0.125, y: 0.875}
+      - {x: 0.125, y: 0.75}
+      - {x: 0, y: 0.75}
+    Width: 1
+    Size: 32
+  - Tag: Sob
+    ListSpriteInfor:
+    - Id: 9
+      Rect:
+        serializedVersion: 2
+        x: 45
+        y: 270
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.125
+        y: 0.75
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.125, y: 0.875}
+      - {x: 0.25, y: 0.875}
+      - {x: 0.25, y: 0.75}
+      - {x: 0.125, y: 0.75}
+    Width: 1
+    Size: 32
+  - Tag: Speechless
+    ListSpriteInfor:
+    - Id: 10
+      Rect:
+        serializedVersion: 2
+        x: 90
+        y: 270
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.25
+        y: 0.75
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.25, y: 0.875}
+      - {x: 0.375, y: 0.875}
+      - {x: 0.375, y: 0.75}
+      - {x: 0.25, y: 0.75}
+    Width: 1
+    Size: 32
+  - Tag: Squirming
+    ListSpriteInfor:
+    - Id: 11
+      Rect:
+        serializedVersion: 2
+        x: 135
+        y: 270
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.375
+        y: 0.75
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.375, y: 0.875}
+      - {x: 0.5, y: 0.875}
+      - {x: 0.5, y: 0.75}
+      - {x: 0.375, y: 0.75}
+    Width: 1
+    Size: 32
+  - Tag: Tongue
+    ListSpriteInfor:
+    - Id: 12
+      Rect:
+        serializedVersion: 2
+        x: 180
+        y: 270
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.5
+        y: 0.75
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.5, y: 0.875}
+      - {x: 0.625, y: 0.875}
+      - {x: 0.625, y: 0.75}
+      - {x: 0.5, y: 0.75}
+    Width: 1
+    Size: 32
+  - Tag: Whimnper
+    ListSpriteInfor:
+    - Id: 13
+      Rect:
+        serializedVersion: 2
+        x: 225
+        y: 270
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.625
+        y: 0.75
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.625, y: 0.875}
+      - {x: 0.75, y: 0.875}
+      - {x: 0.75, y: 0.75}
+      - {x: 0.625, y: 0.75}
+    Width: 1
+    Size: 32
+  - Tag: Wink
+    ListSpriteInfor:
+    - Id: 14
+      Rect:
+        serializedVersion: 2
+        x: 270
+        y: 270
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.75
+        y: 0.75
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.75, y: 0.875}
+      - {x: 0.875, y: 0.875}
+      - {x: 0.875, y: 0.75}
+      - {x: 0.75, y: 0.75}
+    Width: 1
+    Size: 32
+  - Tag: Yeah
+    ListSpriteInfor:
+    - Id: 15
+      Rect:
+        serializedVersion: 2
+        x: 315
+        y: 270
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.875
+        y: 0.75
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.875, y: 0.875}
+      - {x: 1, y: 0.875}
+      - {x: 1, y: 0.75}
+      - {x: 0.875, y: 0.75}
+    Width: 1
+    Size: 32
+  - Tag: Shake
+    ListSpriteInfor:
+    - Id: 16
+      Rect:
+        serializedVersion: 2
+        x: 0
+        y: 225
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0
+        y: 0.625
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0, y: 0.75}
+      - {x: 0.125, y: 0.75}
+      - {x: 0.125, y: 0.625}
+      - {x: 0, y: 0.625}
+    Width: 1
+    Size: 32
+  - Tag: Shock
+    ListSpriteInfor:
+    - Id: 17
+      Rect:
+        serializedVersion: 2
+        x: 45
+        y: 225
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.125
+        y: 0.625
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.125, y: 0.75}
+      - {x: 0.25, y: 0.75}
+      - {x: 0.25, y: 0.625}
+      - {x: 0.125, y: 0.625}
+    Width: 1
+    Size: 32
+  - Tag: Shocked
+    ListSpriteInfor:
+    - Id: 18
+      Rect:
+        serializedVersion: 2
+        x: 90
+        y: 225
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.25
+        y: 0.625
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.25, y: 0.75}
+      - {x: 0.375, y: 0.75}
+      - {x: 0.375, y: 0.625}
+      - {x: 0.25, y: 0.625}
+    Width: 1
+    Size: 32
+  - Tag: Shy
+    ListSpriteInfor:
+    - Id: 19
+      Rect:
+        serializedVersion: 2
+        x: 135
+        y: 225
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.375
+        y: 0.625
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.375, y: 0.75}
+      - {x: 0.5, y: 0.75}
+      - {x: 0.5, y: 0.625}
+      - {x: 0.375, y: 0.625}
+    Width: 1
+    Size: 32
+  - Tag: Sick
+    ListSpriteInfor:
+    - Id: 20
+      Rect:
+        serializedVersion: 2
+        x: 180
+        y: 225
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.5
+        y: 0.625
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.5, y: 0.75}
+      - {x: 0.625, y: 0.75}
+      - {x: 0.625, y: 0.625}
+      - {x: 0.5, y: 0.625}
+    Width: 1
+    Size: 32
+  - Tag: Sigh
+    ListSpriteInfor:
+    - Id: 21
+      Rect:
+        serializedVersion: 2
+        x: 225
+        y: 225
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.625
+        y: 0.625
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.625, y: 0.75}
+      - {x: 0.75, y: 0.75}
+      - {x: 0.75, y: 0.625}
+      - {x: 0.625, y: 0.625}
+    Width: 1
+    Size: 32
+  - Tag: Silent
+    ListSpriteInfor:
+    - Id: 22
+      Rect:
+        serializedVersion: 2
+        x: 270
+        y: 225
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.75
+        y: 0.625
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.75, y: 0.75}
+      - {x: 0.875, y: 0.75}
+      - {x: 0.875, y: 0.625}
+      - {x: 0.75, y: 0.625}
+    Width: 1
+    Size: 32
+  - Tag: Smile
+    ListSpriteInfor:
+    - Id: 23
+      Rect:
+        serializedVersion: 2
+        x: 315
+        y: 225
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.875
+        y: 0.625
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.875, y: 0.75}
+      - {x: 1, y: 0.75}
+      - {x: 1, y: 0.625}
+      - {x: 0.875, y: 0.625}
+    Width: 1
+    Size: 32
+  - Tag: Ok
+    ListSpriteInfor:
+    - Id: 24
+      Rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0
+        y: 0.5
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0, y: 0.625}
+      - {x: 0.125, y: 0.625}
+      - {x: 0.125, y: 0.5}
+      - {x: 0, y: 0.5}
+    Width: 1
+    Size: 32
+  - Tag: Pacify
+    ListSpriteInfor:
+    - Id: 25
+      Rect:
+        serializedVersion: 2
+        x: 45
+        y: 180
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.125
+        y: 0.5
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.125, y: 0.625}
+      - {x: 0.25, y: 0.625}
+      - {x: 0.25, y: 0.5}
+      - {x: 0.125, y: 0.5}
+    Width: 1
+    Size: 32
+  - Tag: Party
+    ListSpriteInfor:
+    - Id: 26
+      Rect:
+        serializedVersion: 2
+        x: 90
+        y: 180
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.25
+        y: 0.5
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.25, y: 0.625}
+      - {x: 0.375, y: 0.625}
+      - {x: 0.375, y: 0.5}
+      - {x: 0.25, y: 0.5}
+    Width: 1
+    Size: 32
+  - Tag: Pleasure
+    ListSpriteInfor:
+    - Id: 27
+      Rect:
+        serializedVersion: 2
+        x: 135
+        y: 180
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.375
+        y: 0.5
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.375, y: 0.625}
+      - {x: 0.5, y: 0.625}
+      - {x: 0.5, y: 0.5}
+      - {x: 0.375, y: 0.5}
+    Width: 1
+    Size: 32
+  - Tag: Poop
+    ListSpriteInfor:
+    - Id: 28
+      Rect:
+        serializedVersion: 2
+        x: 180
+        y: 180
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.5
+        y: 0.5
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.5, y: 0.625}
+      - {x: 0.625, y: 0.625}
+      - {x: 0.625, y: 0.5}
+      - {x: 0.5, y: 0.5}
+    Width: 1
+    Size: 32
+  - Tag: Rose
+    ListSpriteInfor:
+    - Id: 29
+      Rect:
+        serializedVersion: 2
+        x: 225
+        y: 180
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.625
+        y: 0.5
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.625, y: 0.625}
+      - {x: 0.75, y: 0.625}
+      - {x: 0.75, y: 0.5}
+      - {x: 0.625, y: 0.5}
+    Width: 1
+    Size: 32
+  - Tag: Salute
+    ListSpriteInfor:
+    - Id: 30
+      Rect:
+        serializedVersion: 2
+        x: 270
+        y: 180
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.75
+        y: 0.5
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.75, y: 0.625}
+      - {x: 0.875, y: 0.625}
+      - {x: 0.875, y: 0.5}
+      - {x: 0.75, y: 0.5}
+    Width: 1
+    Size: 32
+  - Tag: Scream
+    ListSpriteInfor:
+    - Id: 31
+      Rect:
+        serializedVersion: 2
+        x: 315
+        y: 180
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.875
+        y: 0.5
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.875, y: 0.625}
+      - {x: 1, y: 0.625}
+      - {x: 1, y: 0.5}
+      - {x: 0.875, y: 0.5}
+    Width: 1
+    Size: 32
+  - Tag: Grin
+    ListSpriteInfor:
+    - Id: 32
+      Rect:
+        serializedVersion: 2
+        x: 0
+        y: 135
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0
+        y: 0.375
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0, y: 0.5}
+      - {x: 0.125, y: 0.5}
+      - {x: 0.125, y: 0.375}
+      - {x: 0, y: 0.375}
+    Width: 1
+    Size: 32
+  - Tag: Grrieved
+    ListSpriteInfor:
+    - Id: 33
+      Rect:
+        serializedVersion: 2
+        x: 45
+        y: 135
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.125
+        y: 0.375
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.125, y: 0.5}
+      - {x: 0.25, y: 0.5}
+      - {x: 0.25, y: 0.375}
+      - {x: 0.125, y: 0.375}
+    Width: 1
+    Size: 32
+  - Tag: Heart
+    ListSpriteInfor:
+    - Id: 34
+      Rect:
+        serializedVersion: 2
+        x: 90
+        y: 135
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.25
+        y: 0.375
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.25, y: 0.5}
+      - {x: 0.375, y: 0.5}
+      - {x: 0.375, y: 0.375}
+      - {x: 0.25, y: 0.375}
+    Width: 1
+    Size: 32
+  - Tag: Joyful
+    ListSpriteInfor:
+    - Id: 35
+      Rect:
+        serializedVersion: 2
+        x: 135
+        y: 135
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.375
+        y: 0.375
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.375, y: 0.5}
+      - {x: 0.5, y: 0.5}
+      - {x: 0.5, y: 0.375}
+      - {x: 0.375, y: 0.375}
+    Width: 1
+    Size: 32
+  - Tag: Kiss
+    ListSpriteInfor:
+    - Id: 36
+      Rect:
+        serializedVersion: 2
+        x: 180
+        y: 135
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.5
+        y: 0.375
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.5, y: 0.5}
+      - {x: 0.625, y: 0.5}
+      - {x: 0.625, y: 0.375}
+      - {x: 0.5, y: 0.375}
+    Width: 1
+    Size: 32
+  - Tag: Laugh
+    ListSpriteInfor:
+    - Id: 37
+      Rect:
+        serializedVersion: 2
+        x: 225
+        y: 135
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.625
+        y: 0.375
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.625, y: 0.5}
+      - {x: 0.75, y: 0.5}
+      - {x: 0.75, y: 0.375}
+      - {x: 0.625, y: 0.375}
+    Width: 1
+    Size: 32
+  - Tag: Mua
+    ListSpriteInfor:
+    - Id: 38
+      Rect:
+        serializedVersion: 2
+        x: 270
+        y: 135
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.75
+        y: 0.375
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.75, y: 0.5}
+      - {x: 0.875, y: 0.5}
+      - {x: 0.875, y: 0.375}
+      - {x: 0.75, y: 0.375}
+    Width: 1
+    Size: 32
+  - Tag: No
+    ListSpriteInfor:
+    - Id: 39
+      Rect:
+        serializedVersion: 2
+        x: 315
+        y: 135
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.875
+        y: 0.375
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.875, y: 0.5}
+      - {x: 1, y: 0.5}
+      - {x: 1, y: 0.375}
+      - {x: 0.875, y: 0.375}
+    Width: 1
+    Size: 32
+  - Tag: Dizzy
+    ListSpriteInfor:
+    - Id: 40
+      Rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0
+        y: 0.25
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0, y: 0.375}
+      - {x: 0.125, y: 0.375}
+      - {x: 0.125, y: 0.25}
+      - {x: 0, y: 0.25}
+    Width: 1
+    Size: 32
+  - Tag: Doze
+    ListSpriteInfor:
+    - Id: 41
+      Rect:
+        serializedVersion: 2
+        x: 45
+        y: 90
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.125
+        y: 0.25
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.125, y: 0.375}
+      - {x: 0.25, y: 0.375}
+      - {x: 0.25, y: 0.25}
+      - {x: 0.125, y: 0.25}
+    Width: 1
+    Size: 32
+  - Tag: Drool
+    ListSpriteInfor:
+    - Id: 42
+      Rect:
+        serializedVersion: 2
+        x: 90
+        y: 90
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.25
+        y: 0.25
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.25, y: 0.375}
+      - {x: 0.375, y: 0.375}
+      - {x: 0.375, y: 0.25}
+      - {x: 0.25, y: 0.25}
+    Width: 1
+    Size: 32
+  - Tag: Encourage
+    ListSpriteInfor:
+    - Id: 43
+      Rect:
+        serializedVersion: 2
+        x: 135
+        y: 90
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.375
+        y: 0.25
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.375, y: 0.375}
+      - {x: 0.5, y: 0.375}
+      - {x: 0.5, y: 0.25}
+      - {x: 0.375, y: 0.25}
+    Width: 1
+    Size: 32
+  - Tag: Frown
+    ListSpriteInfor:
+    - Id: 44
+      Rect:
+        serializedVersion: 2
+        x: 180
+        y: 90
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.5
+        y: 0.25
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.5, y: 0.375}
+      - {x: 0.625, y: 0.375}
+      - {x: 0.625, y: 0.25}
+      - {x: 0.5, y: 0.25}
+    Width: 1
+    Size: 32
+  - Tag: GoForIt
+    ListSpriteInfor:
+    - Id: 45
+      Rect:
+        serializedVersion: 2
+        x: 225
+        y: 90
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.625
+        y: 0.25
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.625, y: 0.375}
+      - {x: 0.75, y: 0.375}
+      - {x: 0.75, y: 0.25}
+      - {x: 0.625, y: 0.25}
+    Width: 1
+    Size: 32
+  - Tag: Good
+    ListSpriteInfor:
+    - Id: 46
+      Rect:
+        serializedVersion: 2
+        x: 270
+        y: 90
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.75
+        y: 0.25
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.75, y: 0.375}
+      - {x: 0.875, y: 0.375}
+      - {x: 0.875, y: 0.25}
+      - {x: 0.75, y: 0.25}
+    Width: 1
+    Size: 32
+  - Tag: Gosh
+    ListSpriteInfor:
+    - Id: 47
+      Rect:
+        serializedVersion: 2
+        x: 315
+        y: 90
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.875
+        y: 0.25
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.875, y: 0.375}
+      - {x: 1, y: 0.375}
+      - {x: 1, y: 0.25}
+      - {x: 0.875, y: 0.25}
+    Width: 1
+    Size: 32
+  - Tag: Clap
+    ListSpriteInfor:
+    - Id: 48
+      Rect:
+        serializedVersion: 2
+        x: 0
+        y: 45
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0
+        y: 0.125
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0, y: 0.25}
+      - {x: 0.125, y: 0.25}
+      - {x: 0.125, y: 0.125}
+      - {x: 0, y: 0.125}
+    Width: 1
+    Size: 32
+  - Tag: Clink
+    ListSpriteInfor:
+    - Id: 49
+      Rect:
+        serializedVersion: 2
+        x: 45
+        y: 45
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.125
+        y: 0.125
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.125, y: 0.25}
+      - {x: 0.25, y: 0.25}
+      - {x: 0.25, y: 0.125}
+      - {x: 0.125, y: 0.125}
+    Width: 1
+    Size: 32
+  - Tag: Cool
+    ListSpriteInfor:
+    - Id: 50
+      Rect:
+        serializedVersion: 2
+        x: 90
+        y: 45
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.25
+        y: 0.125
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.25, y: 0.25}
+      - {x: 0.375, y: 0.25}
+      - {x: 0.375, y: 0.125}
+      - {x: 0.25, y: 0.125}
+    Width: 1
+    Size: 32
+  - Tag: Cry
+    ListSpriteInfor:
+    - Id: 51
+      Rect:
+        serializedVersion: 2
+        x: 135
+        y: 45
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.375
+        y: 0.125
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.375, y: 0.25}
+      - {x: 0.5, y: 0.25}
+      - {x: 0.5, y: 0.125}
+      - {x: 0.375, y: 0.125}
+    Width: 1
+    Size: 32
+  - Tag: Demon
+    ListSpriteInfor:
+    - Id: 52
+      Rect:
+        serializedVersion: 2
+        x: 180
+        y: 45
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.5
+        y: 0.125
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.5, y: 0.25}
+      - {x: 0.625, y: 0.25}
+      - {x: 0.625, y: 0.125}
+      - {x: 0.5, y: 0.125}
+    Width: 1
+    Size: 32
+  - Tag: Despair
+    ListSpriteInfor:
+    - Id: 53
+      Rect:
+        serializedVersion: 2
+        x: 225
+        y: 45
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.625
+        y: 0.125
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.625, y: 0.25}
+      - {x: 0.75, y: 0.25}
+      - {x: 0.75, y: 0.125}
+      - {x: 0.625, y: 0.125}
+    Width: 1
+    Size: 32
+  - Tag: Dislike
+    ListSpriteInfor:
+    - Id: 54
+      Rect:
+        serializedVersion: 2
+        x: 270
+        y: 45
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.75
+        y: 0.125
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.75, y: 0.25}
+      - {x: 0.875, y: 0.25}
+      - {x: 0.875, y: 0.125}
+      - {x: 0.75, y: 0.125}
+    Width: 1
+    Size: 32
+  - Tag: Dissatisfied
+    ListSpriteInfor:
+    - Id: 55
+      Rect:
+        serializedVersion: 2
+        x: 315
+        y: 45
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.875
+        y: 0.125
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.875, y: 0.25}
+      - {x: 1, y: 0.25}
+      - {x: 1, y: 0.125}
+      - {x: 0.875, y: 0.125}
+    Width: 1
+    Size: 32
+  - Tag: Angel
+    ListSpriteInfor:
+    - Id: 56
+      Rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0, y: 0.125}
+      - {x: 0.125, y: 0.125}
+      - {x: 0.125, y: 0}
+      - {x: 0, y: 0}
+    Width: 1
+    Size: 32
+  - Tag: Angry
+    ListSpriteInfor:
+    - Id: 57
+      Rect:
+        serializedVersion: 2
+        x: 45
+        y: 0
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.125
+        y: 0
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.125, y: 0.125}
+      - {x: 0.25, y: 0.125}
+      - {x: 0.25, y: 0}
+      - {x: 0.125, y: 0}
+    Width: 1
+    Size: 32
+  - Tag: Beckon
+    ListSpriteInfor:
+    - Id: 58
+      Rect:
+        serializedVersion: 2
+        x: 90
+        y: 0
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.25
+        y: 0
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.25, y: 0.125}
+      - {x: 0.375, y: 0.125}
+      - {x: 0.375, y: 0}
+      - {x: 0.25, y: 0}
+    Width: 1
+    Size: 32
+  - Tag: Bitter
+    ListSpriteInfor:
+    - Id: 59
+      Rect:
+        serializedVersion: 2
+        x: 135
+        y: 0
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.375
+        y: 0
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.375, y: 0.125}
+      - {x: 0.5, y: 0.125}
+      - {x: 0.5, y: 0}
+      - {x: 0.375, y: 0}
+    Width: 1
+    Size: 32
+  - Tag: Blush
+    ListSpriteInfor:
+    - Id: 60
+      Rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.5
+        y: 0
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.5, y: 0.125}
+      - {x: 0.625, y: 0.125}
+      - {x: 0.625, y: 0}
+      - {x: 0.5, y: 0}
+    Width: 1
+    Size: 32
+  - Tag: Cake
+    ListSpriteInfor:
+    - Id: 61
+      Rect:
+        serializedVersion: 2
+        x: 225
+        y: 0
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.625
+        y: 0
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.625, y: 0.125}
+      - {x: 0.75, y: 0.125}
+      - {x: 0.75, y: 0}
+      - {x: 0.625, y: 0}
+    Width: 1
+    Size: 32
+  - Tag: Cat
+    ListSpriteInfor:
+    - Id: 62
+      Rect:
+        serializedVersion: 2
+        x: 270
+        y: 0
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.75
+        y: 0
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.75, y: 0.125}
+      - {x: 0.875, y: 0.125}
+      - {x: 0.875, y: 0}
+      - {x: 0.75, y: 0}
+    Width: 1
+    Size: 32
+  - Tag: Chuckle
+    ListSpriteInfor:
+    - Id: 63
+      Rect:
+        serializedVersion: 2
+        x: 315
+        y: 0
+        width: 45
+        height: 45
+      DrawTexCoord:
+        serializedVersion: 2
+        x: 0.875
+        y: 0
+        width: 0.125
+        height: 0.125
+      Uv:
+      - {x: 0.875, y: 0.125}
+      - {x: 1, y: 0.125}
+      - {x: 1, y: 0}
+      - {x: 0.875, y: 0}
+    Width: 1
+    Size: 32

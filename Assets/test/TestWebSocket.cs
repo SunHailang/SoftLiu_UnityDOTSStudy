@@ -1,12 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.WebSockets;
 using System.Text;
+using TMPro;
 using UnityEngine;
 
 public class TestWebSocket : MonoBehaviour
 {
+    public TextMeshProUGUI text;
+    public TextMeshProUGUI text1;
+    
     private async void CreateWebSocket()
     {
         ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
@@ -48,13 +53,21 @@ public class TestWebSocket : MonoBehaviour
         }
         catch (System.Exception error)
         {
-
-            throw;
+            Debug.LogError($"{error.Message}");
         }
     }
 
     public void ButtonClick()
     {
         CreateWebSocket();
+    }
+
+    private void Start()
+    {
+        text.text = "New TextNew TextNew TextNew TextNew Text";
+        UnityEngine.Debug.LogError($"{text.GetPreferredValues()}");
+        
+        text1.text = "New TextNew TextNew TextNew TextNew Text";
+        UnityEngine.Debug.LogError($"{text1.GetPreferredValues()}");
     }
 }

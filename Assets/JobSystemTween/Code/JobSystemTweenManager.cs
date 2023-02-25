@@ -29,7 +29,7 @@ namespace job.tween
 
     public class TweenData
     {
-        TransformAccessArray transArray = new TransformAccessArray();
+        //TransformAccessArray transArray = new TransformAccessArray();
         
         public void OnStart()
         {
