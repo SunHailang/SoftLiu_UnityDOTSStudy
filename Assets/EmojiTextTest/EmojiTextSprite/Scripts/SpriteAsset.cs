@@ -34,6 +34,20 @@ namespace act.ui.EmojiText
         /// 所有sprite信息 SpriteAssetInfor类为具体的信息类
         /// </summary>
         public List<SpriteInforGroup> ListSpriteGroup;
+
+        public bool GetSpriteInfo(string tag, out SpriteInforGroup group)
+        {
+            foreach (SpriteInforGroup inforGroup in ListSpriteGroup)
+            {
+                if (inforGroup.Tag == tag)
+                {
+                    group = inforGroup;
+                    return true;
+                }
+            }
+            group = null;
+            return false;
+        }
     }
 
     [System.Serializable]

@@ -11,12 +11,13 @@ namespace act.ui.EmojiText
     public class SpriteGraphic : MaskableGraphic
     {
         #region 属性
+
         //默认shader
         private const string _defaultShader = "Hidden/UI/Emoji";
         private Material _defaultMater = null;
 
         public SpriteAsset m_spriteAsset;
-
+        
         ////分割数量
         //[SerializeField]
         //private int _cellAmount = 1;
@@ -28,6 +29,7 @@ namespace act.ui.EmojiText
 
         //模型数据
         private MeshInfo _meshInfo;
+
         public MeshInfo MeshInfo
         {
             get { return _meshInfo; }
@@ -40,7 +42,7 @@ namespace act.ui.EmojiText
                 else
                     _meshInfo = value;
 
-                SetAllDirty();
+                //SetAllDirty();
             }
         }
 
@@ -48,10 +50,12 @@ namespace act.ui.EmojiText
         {
             get
             {
-                if (m_spriteAsset == null || m_spriteAsset.TexSource == null)
-                    return base.mainTexture;
-                else
+                if (m_spriteAsset != null && m_spriteAsset.TexSource != null)
+                {
                     return m_spriteAsset.TexSource;
+                }
+
+                return base.mainTexture;
             }
         }
 
@@ -72,9 +76,11 @@ namespace act.ui.EmojiText
                         _defaultMater.SetFloat("_Speed", m_spriteAsset.Speed);
                     }
                 }
+
                 return _defaultMater;
             }
         }
+
         #endregion
 
         protected override void OnPopulateMesh(VertexHelper vh)
@@ -86,7 +92,7 @@ namespace act.ui.EmojiText
                 for (int i = 0; i < _meshInfo.Vertices.Count; i++)
                 {
                     int tempVertsIndex = i & 3;
-                    _tempVerts[tempVertsIndex].position = _meshInfo.Vertices[i];// Utility.TransformWorld2Point(transform, _meshInfo.Vertices[i]);
+                    _tempVerts[tempVertsIndex].position = _meshInfo.Vertices[i]; // Utility.TransformWorld2Point(transform, _meshInfo.Vertices[i]);
                     _tempVerts[tempVertsIndex].uv0 = _meshInfo.UVs[i];
                     // 每一个Mesh有4个顶点
                     int colorIndex = i / 4;
@@ -97,5 +103,4 @@ namespace act.ui.EmojiText
             }
         }
     }
-
 }

@@ -11,6 +11,8 @@ using act.ui.EmojiText;
 [ExecuteInEditMode]
 public class TestEmojiText : Text
 {
+    [SerializeField] private List<EmojiSpriteGraphic> m_emojiSpriteList = new List<EmojiSpriteGraphic>();
+
     // 用正则取  [图集ID#表情Tag] ID值==-1 ,表示为超链接
     private static readonly Regex _inputTagRegex = new Regex(@"\[(\-{0,1}\d{0,})#(.+?)\]", RegexOptions.Singleline);
 
@@ -46,6 +48,7 @@ public class TestEmojiText : Text
     #region 重写函数
 
     [TextArea(3, 10)] [SerializeField] protected string _text = string.Empty;
+    
 
     public override string text
     {
@@ -80,29 +83,6 @@ public class TestEmojiText : Text
         }
     }
 
-    private const string _defaultShader = "Hidden/UI/Emoji";
-    private Material _defaultMater = null;
-    public override Material material
-    {
-        get
-        {
-            if (_defaultMater == null && EmojiTextSpriteMgr.spriteAssets != null)
-            {
-                _defaultMater = new Material(Shader.Find(_defaultShader));
-                //是否开启动画
-                // if (m_spriteAsset.IsStatic)
-                    _defaultMater.DisableKeyword("EMOJI_ANIMATION");
-                // else
-                // {
-                //     _defaultMater.EnableKeyword("EMOJI_ANIMATION");
-                //     _defaultMater.SetFloat("_CellAmount", m_spriteAsset.Column);
-                //     _defaultMater.SetFloat("_Speed", m_spriteAsset.Speed);
-                // }
-            }
-            return _defaultMater;
-        }
-    }
-    
     private string GetOutputText(string inputText)
     {
         //回收各种对象
@@ -129,9 +109,7 @@ public class TestEmojiText : Text
                 part = inputText.Substring(textIndex, match.Index - textIndex);
                 _textBuilder.Append(part);
                 _textBuilder.Append($"<color=#0000FF{String.Format("{0:X2}", (byte) (color.a * byte.MaxValue))}>");
-                int startIndex = _textBuilder.Length * 4;
                 _textBuilder.Append("[" + match.Groups[2].Value + "]");
-                int endIndex = _textBuilder.Length * 4 - 1;
                 _textBuilder.Append("</color>");
                 newIndex += ReplaceRichText(part).Length * 4;
                 int newStartIndex = newIndex;
@@ -148,9 +126,15 @@ public class TestEmojiText : Text
             //更新表情
             else
             {
-                if (EmojiTextSpriteMgr.spriteInfoDict == null
-                    || !EmojiTextSpriteMgr.spriteInfoDict.TryGetValue(tempId, out Dictionary<string, SpriteInforGroup> _indexSpriteInfo)
-                    || !_indexSpriteInfo.TryGetValue(tempTag, out SpriteInforGroup tempGroup))
+                SpriteInforGroup tempGroup = null;
+                foreach (EmojiSpriteGraphic graphic in m_emojiSpriteList)
+                {
+                    if (graphic.SpriteID == tempId && graphic.SpriteGraphicData.m_spriteAsset.GetSpriteInfo(tempTag, out tempGroup))
+                    {
+                        break;
+                    }
+                }
+                if (tempGroup == null)
                 {
                     continue;
                 }
@@ -224,4 +208,272 @@ public class TestEmojiText : Text
     }
 
     #endregion
+
+    protected override void OnPopulateMesh(VertexHelper toFill)
+    {
+        if (font == null)
+            return;
+        base.OnPopulateMesh(toFill);
+
+        m_DisableFontTextureRebuiltCallback = true;
+        //更新顶点位置&去掉乱码uv
+        DealSpriteTagInfo(toFill);
+        //处理超链接的信息
+        DealHrefInfo(toFill);
+        m_DisableFontTextureRebuiltCallback = false;
+
+        //更新表情绘制
+        UpdateDrawSprite(true);
+    }
+
+    //处理表情信息
+    private void DealSpriteTagInfo(VertexHelper toFill)
+    {
+        int index = -1;
+        //bool autoLF = AutoLF();
+        //emoji 
+        for (int i = 0; i < _spriteInfo.Count; i++)
+        {
+            index = _spriteInfo[i].NewIndex;
+            if ((index + 4) <= toFill.currentVertCount)
+            {
+                for (int j = index; j < index + 4; j++)
+                {
+                    toFill.PopulateUIVertex(ref _tempVertex, j);
+                    //清理多余的乱码uv
+                    _tempVertex.uv0 = Vector2.zero;
+                    _tempVertex.color = color;
+                    //获取quad的位置 --> 转为世界坐标
+                    _spriteInfo[i].Pos[j - index] = Utility.TransformPoint2World(transform, _tempVertex.position);
+                    toFill.SetUIVertex(_tempVertex, j);
+                }
+            }
+        }
+    }
+
+    //处理超链接的信息
+    private void DealHrefInfo(VertexHelper toFill)
+    {
+        if (_listHrefInfos.Count > 0)
+        {
+            //bool autoLF = AutoLF();
+            // 处理超链接包围框  
+            for (int i = 0; i < _listHrefInfos.Count; i++)
+            {
+                _listHrefInfos[i].Boxes.Clear();
+
+                int startIndex = _listHrefInfos[i].NewStartIndex;
+                int endIndex = _listHrefInfos[i].NewEndIndex;
+
+                if (startIndex >= toFill.currentVertCount)
+                    continue;
+
+                toFill.PopulateUIVertex(ref _tempVertex, startIndex);
+                // 将超链接里面的文本顶点索引坐标加入到包围框  
+                var pos = _tempVertex.position;
+                var bounds = new Bounds(pos, Vector3.zero);
+                for (int j = startIndex + 1; j < endIndex; j++)
+                {
+                    if (j >= toFill.currentVertCount)
+                    {
+                        break;
+                    }
+
+                    toFill.PopulateUIVertex(ref _tempVertex, j);
+                    pos = _tempVertex.position;
+                    if (pos.x < bounds.min.x)
+                    {
+                        // 换行重新添加包围框  
+                        _listHrefInfos[i].Boxes.Add(new Rect(bounds.min, bounds.size));
+                        bounds = new Bounds(pos, Vector3.zero);
+                    }
+                    else
+                    {
+                        bounds.Encapsulate(pos); // 扩展包围框  
+                    }
+                }
+
+                //添加包围盒
+                _listHrefInfos[i].Boxes.Add(new Rect(bounds.min, bounds.size));
+            }
+
+            // //添加下划线
+            // Vector2 extents = rectTransform.rect.size;
+            // var settings = GetGenerationSettings(extents);
+            // TextGenerator underlineText = Pool<TextGenerator>.Get();
+            // underlineText.Populate("_", settings);
+            // IList<UIVertex> tut = underlineText.verts;
+            // for (int m = 0; m < _listHrefInfos.Count; m++)
+            // {
+            //     for (int i = 0; i < _listHrefInfos[m].Boxes.Count; i++)
+            //     {
+            //         //计算下划线的位置
+            //         Vector3[] ulPos = new Vector3[4];
+            //         ulPos[0] = _listHrefInfos[m].Boxes[i].position + new Vector2(0.0f, fontSize * 0.2f);
+            //         ulPos[1] = ulPos[0] + new Vector3(_listHrefInfos[m].Boxes[i].width, 0.0f);
+            //         ulPos[2] = _listHrefInfos[m].Boxes[i].position + new Vector2(_listHrefInfos[m].Boxes[i].width, 0.0f);
+            //         ulPos[3] = _listHrefInfos[m].Boxes[i].position;
+            //         //绘制下划线
+            //         for (int j = 0; j < 4; j++)
+            //         {
+            //             m_TempVerts[j] = tut[j];
+            //             m_TempVerts[j].color = Color.blue;
+            //             m_TempVerts[j].position = ulPos[j];
+            //             if (j == 3)
+            //                 toFill.AddUIVertexQuad(m_TempVerts);
+            //         }
+            //     }
+            // }
+            // //回收下划线的对象
+            // Pool<TextGenerator>.Release(underlineText);
+        }
+    }
+
+    //表情绘制
+    private void UpdateDrawSprite(bool visable)
+    {
+        //记录之前的信息
+        if ((_spriteInfo == null || _spriteInfo.Count == 0) && _lastRenderIndexs.Count > 0)
+        {
+            for (int i = 0; i < _lastRenderIndexs.Count; i++)
+            {
+                UpdateTextInfo(_lastRenderIndexs[i], null, visable);
+            }
+
+            _lastRenderIndexs.Clear();
+        }
+        else
+        {
+            _lastRenderIndexs.Clear();
+            for (int i = 0; i < _spriteInfo.Count; i++)
+            {
+                //添加渲染id索引
+                if (!_lastRenderIndexs.Contains(_spriteInfo[i].Id))
+                {
+                    UpdateTextInfo(_spriteInfo[i].Id, _spriteInfo.FindAll(x => x.Id == _spriteInfo[i].Id), visable);
+                    _lastRenderIndexs.Add(_spriteInfo[i].Id);
+                }
+            }
+        }
+    }
+
+    public void UpdateTextInfo(int id, List<SpriteTagInfo> value, bool visable)
+    {
+        if (value == null)
+        {
+            foreach (EmojiSpriteGraphic graphic in m_emojiSpriteList)
+            {
+                if (graphic.SpriteID == id && graphic.SpriteGraphicData.MeshInfo != null)
+                {
+                    graphic.SpriteGraphicData.MeshInfo.Release();
+                }
+            }
+        }
+        else
+        {
+            foreach (EmojiSpriteGraphic graphic in m_emojiSpriteList)
+            {
+                if (graphic.SpriteID == id)
+                {
+                    SpriteGraphic spriteGraphic = graphic.SpriteGraphicData;
+                    MeshInfo meshInfo = spriteGraphic.MeshInfo;
+                    if (meshInfo == null)
+                    {
+                        meshInfo = Pool<MeshInfo>.Get();
+                    }
+
+                    meshInfo.Reset();
+                    meshInfo.visable = visable;
+                    for (int i = 0; i < value.Count; i++)
+                    {
+                        for (int j = 0; j < value[i].Pos.Length; j++)
+                        {
+                            //世界转本地坐标->避免位置变换的错位
+                            meshInfo.Vertices.Add(Utility.TransformWorld2Point(spriteGraphic.transform, value[i].Pos[j]));
+                        }
+
+                        meshInfo.UVs.AddRange(value[i].UVs);
+                        meshInfo.Colors.Add(value[i].ColorData);
+                    }
+
+                    // if (spriteGraphic.MeshInfo != null)
+                    //     Pool<MeshInfo>.Release(spriteGraphic.MeshInfo);
+
+                    spriteGraphic.MeshInfo = meshInfo;
+                }
+            }
+        }
+    }
+
+
+#if UNITY_EDITOR
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+        m_Text = GetOutputText(_text);
+        SetVerticesDirty();
+        SetLayoutDirty();
+    }
+
+    // //辅助线框
+    // Vector3[] _textWolrdVertexs = new Vector3[4];
+    // private void OnDrawGizmos()
+    // {
+    //     //text
+    //     rectTransform.GetWorldCorners(_textWolrdVertexs);
+    //     GizmosDrawLine(Color.white, _textWolrdVertexs);
+    //
+    //     //preferred size
+    //     Vector2 pivot = GetTextAnchorPivot(alignment);
+    //     Rect rect = new Rect();
+    //     Vector2 size = rectTransform.sizeDelta - new Vector2(preferredWidth, preferredHeight);
+    //     rect.position = new Vector2(pivot.x * size.x, pivot.y * size.y) - new Vector2(rectTransform.sizeDelta.x * rectTransform.pivot.x, rectTransform.sizeDelta.y * rectTransform.pivot.y);
+    //     rect.width = preferredWidth;
+    //     rect.height = preferredHeight;
+    //     _textWolrdVertexs[0] = Utility.TransformPoint2World(transform, new Vector3(rect.x, rect.y));
+    //     _textWolrdVertexs[1] = Utility.TransformPoint2World(transform, new Vector3(rect.x + rect.width, rect.y));
+    //     _textWolrdVertexs[2] = Utility.TransformPoint2World(transform, new Vector3(rect.x + rect.width, rect.y + rect.height));
+    //     _textWolrdVertexs[3] = Utility.TransformPoint2World(transform, new Vector3(rect.x, rect.y + rect.height));
+    //     GizmosDrawLine(Color.blue, _textWolrdVertexs);
+    //
+    //     //href
+    //     for (int i = 0; i < _listHrefInfos.Count; i++)
+    //     {
+    //         for (int j = 0; j < _listHrefInfos[i].Boxes.Count; j++)
+    //         {
+    //             rect = _listHrefInfos[i].Boxes[j];
+    //             _textWolrdVertexs[0] = Utility.TransformPoint2World(transform, rect.position);
+    //             _textWolrdVertexs[1] = Utility.TransformPoint2World(transform, new Vector3(rect.x + rect.width, rect.y));
+    //             _textWolrdVertexs[2] = Utility.TransformPoint2World(transform, new Vector3(rect.x + rect.width, rect.y + rect.height));
+    //             _textWolrdVertexs[3] = Utility.TransformPoint2World(transform, new Vector3(rect.x, rect.y + rect.height));
+    //
+    //             GizmosDrawLine(Color.green, _textWolrdVertexs);
+    //         }
+    //     }
+    //
+    //     //sprite
+    //     for (int i = 0; i < _spriteInfo.Count; i++)
+    //     {
+    //         GizmosDrawLine(Color.yellow, _spriteInfo[i].Pos);
+    //     }
+    // }
+    // //划线
+    // private void GizmosDrawLine(Color color, Vector3[] pos)
+    // {
+    //     Gizmos.color = color;
+    //
+    //     Gizmos.DrawLine(pos[0], pos[1]);
+    //     Gizmos.DrawLine(pos[1], pos[2]);
+    //     Gizmos.DrawLine(pos[2], pos[3]);
+    //     Gizmos.DrawLine(pos[3], pos[0]);
+    // }
+#endif
+}
+
+
+[System.Serializable]
+public class EmojiSpriteGraphic
+{
+    public int SpriteID = 0;
+    public SpriteGraphic SpriteGraphicData = null;
 }

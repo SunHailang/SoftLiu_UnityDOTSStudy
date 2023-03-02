@@ -1,7 +1,7 @@
 using System;
 using UnityEditor;
 
-[CustomEditor(typeof(EmojiText), true)]
+[CustomEditor(typeof(EmojiTextSpriteMgrEditor), true)]
 [CanEditMultipleObjects]
 public class EmojiTextSpriteMgrEditor : Editor
 {
@@ -11,7 +11,7 @@ public class EmojiTextSpriteMgrEditor : Editor
 
     private void OnEnable()
     {
-        _spriteAssets = serializedObject.FindProperty("spriteAssets");
+        _spriteAssets = serializedObject.FindProperty("_spriteAssets");
     }
     
     public override void OnInspectorGUI()

@@ -131,5 +131,5 @@ Shader "Hidden/UI/Emoji"
         ENDCG
         }
     }
-	CustomEditor "EmojiText.Taurus.EmojiShaderGUI"
+	// CustomEditor "EmojiText.Taurus.EmojiShaderGUI"
 }

@@ -13,6 +13,7 @@ public class TestEmojiTextEditor : GraphicEditor
     SerializedProperty m_FontData;
     GUIContent _inputGUIContent;
     GUIContent _outputGUIContent;
+    private SerializedProperty m_emojiSpriteList;
     #endregion
     protected override void OnEnable()
     {
@@ -24,6 +25,7 @@ public class TestEmojiTextEditor : GraphicEditor
         _text = serializedObject.FindProperty("_text");
         m_Text = serializedObject.FindProperty("m_Text");
         m_FontData = serializedObject.FindProperty("m_FontData");
+        m_emojiSpriteList = serializedObject.FindProperty("m_emojiSpriteList");
 
         _emojiText = target as TestEmojiText;
     }
@@ -34,6 +36,7 @@ public class TestEmojiTextEditor : GraphicEditor
         EditorGUILayout.PropertyField(_text, _inputGUIContent);
         EditorGUILayout.PropertyField(m_Text, _outputGUIContent);
         EditorGUILayout.PropertyField(m_FontData);
+        EditorGUILayout.PropertyField(m_emojiSpriteList);
         AppearanceControlsGUI();
         RaycastControlsGUI();
         serializedObject.ApplyModifiedProperties();
